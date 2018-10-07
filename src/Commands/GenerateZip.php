@@ -30,7 +30,7 @@ class GenerateZip extends Command
      */
     public function handle()
     {
-        $zip = Zip::fromDir(base_path());
+        $zip = Zip::fromDir(base_path(), Gitignore::getExcludes()->except('vendor')->toArray(), $randomPath = storage_path('tmp/'.str_random(20).'.zip'));
 
         $zip->addFileFromString(HandlerGenerator::generate([
                     'host' => 'lara41.wip',
@@ -39,8 +39,8 @@ class GenerateZip extends Command
                 ]), 'handler.js')
             ->addFile(__DIR__.'../../utils/php-binaries/php-cgi-7.2', 'php-cgi');
 
-        $zip->saveTo($path = storage_path('tmp/'.str_random(20).'.zip'));
+        $zip->saveTo($randomPath);
 
-        $this->info("Zip saved to [$path]");
+        $this->info("Zip saved to [$randomPath]");
     }
 }
