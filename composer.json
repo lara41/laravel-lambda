@@ -1,0 +1,45 @@
+{
+    "name": "lara41/laravel-lambda",
+    "description": "Utilities to make deploying Laravel apps to Lambda easier",
+    "keywords": [
+        "lara41",
+        "laravel-lambda"
+    ],
+    "homepage": "https://github.com/lara41/laravel-lambda",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Miguel Piedrafita",
+            "email": "soy@miguelpiedrafita.com",
+            "homepage": "https://miguelpiedrafita.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Sergio Ródenas",
+            "email": "rodenastyle@gmail.com",
+            "homepage": "https://rodenastyle.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "larapack/dd": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lara41\\Utils\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lara41\\Utils\\UtilsServiceProvider"
+            ]
+        }
+    }
+}

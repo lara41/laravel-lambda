@@ -1,0 +1,6 @@
+[submodule "utils/php-binaries"]
+	path = utils/php-binaries
+	url = git@github.com:lara41/php-binaries
+[submodule "utils/laravel-handler"]
+	path = utils/laravel-handler
+	url = git@github.com:lara41/laravel-handler
