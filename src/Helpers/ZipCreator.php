@@ -3,13 +3,14 @@
 namespace Lara41\Utils\Helpers;
 
 use ZipArchive;
-use Facades\Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\Finder;
 
 class ZipCreator
 {
     public function __construct()
     {
         $this->zip = app(ZipArchive::class);
+        $this->finder = app(Finder::class);
     }
 
     public function create(string $path, array $excludes = [], string $tempdest)
@@ -18,7 +19,7 @@ class ZipCreator
             throw new \RuntimeException("Can't create zip");
         }
 
-        $this->addToZip(Finder::in($path)->exclude($excludes));
+        $this->addToZip($this->finder->in($path)->exclude($excludes));
 
         $zip->close();
 
@@ -31,7 +32,7 @@ class ZipCreator
     {
         foreach ($iterator as $item) {
             if ($item->isDir()) {
-                $this->addToZip(Finder::in($item->getRealPath()));
+                $this->addToZip($this->finder->in($item->getRealPath()));
             }
 
             $this->zip->addFile($item->getFilename());
