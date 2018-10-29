@@ -31,7 +31,7 @@ class GenerateZip extends Command
      */
     public function handle()
     {
-        $zip = Zip::fromDir(base_path(), app(Gitignore::class)->getExcludes()->except('vendor')->toArray(), $randomPath = storage_path('tmp/'.str_random(20).'.zip'));
+        $zip = Zip::fromDir(base_path(), Gitignore::getExcludes()->except('vendor')->toArray(), $randomPath = storage_path('tmp/'.str_random(20).'.zip'));
 
         $zip->addFileFromString(HandlerGenerator::generate([
                     'host' => 'lara41.wip',
