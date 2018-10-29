@@ -4,6 +4,7 @@ namespace Lara41\Utils\Commands;
 
 use Lara41\Utils\Helpers\Zip;
 use Illuminate\Console\Command;
+use Lara41\Utils\Helpers\Gitignore;
 use Lara41\Utils\Helpers\HandlerGenerator;
 
 class GenerateZip extends Command
