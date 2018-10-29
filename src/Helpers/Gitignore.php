@@ -8,15 +8,15 @@ class Gitignore
 
     public function __construct(string $path)
     {
-        $this->gitignore = static::parseGitignore($path);
+        $this->gitignore = $this->parseGitignore($path);
     }
 
-    public function getExcludes()
+    public static function getExcludes($path = null)
     {
-        return $this;
+        return new static($path ?? base_path('.gitignore'));
     }
 
-    public static function parseGitignore(string $path)
+    public function parseGitignore(string $path)
     {
         $contents = @file_get_contents(str_finish($path, '/').'.gitignore');
 
