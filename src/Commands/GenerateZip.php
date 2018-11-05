@@ -38,7 +38,7 @@ class GenerateZip extends Command
             'prefix' => '/' . substr($zip->getClient()->statindex(0)['name'], 0, -1),
             'https' => true,
         ]), 'handler.js')
-            ->addFile(__DIR__ . '/../../utils/php-binaries/php-cgi-7.2', 'php-cgi');
+            ->addFile(__DIR__ . '/../../utils/php-cgi', 'php-cgi');
 
         $zip->saveTo($randomPath);
 
