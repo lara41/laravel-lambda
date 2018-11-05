@@ -8,7 +8,7 @@ class HandlerGenerator
 {
     const REGEX = '/(let app = JSON.parse\(\').*(\'\) ?\/\/.* ?lar41-properties)/m';
 
-    const STORAGE_PATH = 'laravel-handler/handler.js';
+    const STORAGE_PATH = 'handler.js';
 
     public static function generate(array $options) : string
     {
