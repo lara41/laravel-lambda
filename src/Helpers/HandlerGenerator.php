@@ -14,6 +14,6 @@ class HandlerGenerator
     {
         $options = OptionsResolver::setRequired(['host', 'prefix', 'https'])->resolve($options);
 
-        return preg_replace(self::REGEX, '$1'.json_encode($options).'$2', file_get_contents(__DIR__.'../../utils/'.self::STORAGE_PATH));
+        return preg_replace(self::REGEX, '$1' . json_encode($options) . '$2', file_get_contents(__DIR__ . '/../../utils/' . self::STORAGE_PATH));
     }
 }

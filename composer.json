@@ -22,7 +22,8 @@
         }
     ],
     "require": {
-        "php": "^7.1"
+        "php": "^7.1",
+        "symfony/options-resolver": "^4.1"
     },
     "require-dev": {
         "larapack/dd": "^1.0"

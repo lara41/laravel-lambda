@@ -31,14 +31,14 @@ class GenerateZip extends Command
      */
     public function handle()
     {
-        $zip = Zip::fromDir(base_path(), Gitignore::getExcludes()->except('vendor')->toArray(), $randomPath = storage_path('tmp/'.str_random(20).'.zip'));
+        $zip = Zip::fromDir(base_path(), Gitignore::getExcludes()->except('/vendor')->toArray(), $randomPath = storage_path('tmp/' . str_random(20) . '.zip'));
 
         $zip->addFileFromString(HandlerGenerator::generate([
-                    'host' => 'lara41.wip',
-                    'prefix' => '/'.substr($zip->getClient()->statindex(0)['name'], 0, -1),
-                    'https' => true,
-                ]), 'handler.js')
-            ->addFile(__DIR__.'../../utils/php-binaries/php-cgi-7.2', 'php-cgi');
+            'host' => 'lara41.wip',
+            'prefix' => '/' . substr($zip->getClient()->statindex(0)['name'], 0, -1),
+            'https' => true,
+        ]), 'handler.js')
+            ->addFile(__DIR__ . '/../../utils/php-binaries/php-cgi-7.2', 'php-cgi');
 
         $zip->saveTo($randomPath);
 

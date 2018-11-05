@@ -11,7 +11,11 @@ class Zip
 
     public function __construct(string $zipContent)
     {
-        file_put_contents($this->path = storage_path('tmp/'.$fileName = str_random(10).'.zip'), $zipContent);
+        if (!extension_loaded('zip')) {
+            throw new \Exception('ZIP Extension not loaded.');
+        }
+
+        file_put_contents($this->path = storage_path('tmp/' . $fileName = str_random(10) . '.zip'), $zipContent);
 
         $this->zip = app(ZipArchive::class);
 
@@ -26,7 +30,7 @@ class Zip
 
     public function addFileFromString(string $contents, string $filename) : self
     {
-        if (! $this->zip->addFromString($filename, $contents)) {
+        if (!$this->zip->addFromString($filename, $contents)) {
             throw new \RuntimeException("There was an error when adding the file.");
         }
 
@@ -35,7 +39,7 @@ class Zip
 
     public function addFile(string $file, string $filename) : self
     {
-        if (! $this->zip->addFile($file, $filename)) {
+        if (!$this->zip->addFile($file, $filename)) {
             throw new \RuntimeException("There was an error when adding the file.");
         }
 
@@ -44,7 +48,7 @@ class Zip
 
     public function getContents() : string
     {
-        if (! $this->zip->close()) {
+        if (!$this->zip->close()) {
             throw new \RuntimeException("There was an error when saving the zip.");
         }
         return file_get_contents($this->path);
