@@ -12,7 +12,7 @@ class HandlerGenerator
 
     public static function generate(array $options) : string
     {
-        $options = app(OptionsResolver)->setRequired(['host', 'prefix', 'https'])->resolve($options);
+        $options = app(OptionsResolver::class)->setRequired(['host', 'prefix', 'https'])->resolve($options);
 
         return preg_replace(self::REGEX, '$1' . json_encode($options) . '$2', file_get_contents(__DIR__ . '/../../utils/' . self::STORAGE_PATH));
     }
