@@ -9,13 +9,13 @@ class Zip
     protected $path;
     protected $zip;
 
-    public function __construct(string $zipContent)
+    public function __construct(string $zipContent, string $path = null)
     {
         if (!extension_loaded('zip')) {
             throw new \Exception('ZIP Extension not loaded.');
         }
 
-        file_put_contents($this->path = storage_path('tmp/' . $fileName = str_random(10) . '.zip'), $zipContent);
+        file_put_contents($this->path = $path ?? storage_path('tmp/' . str_random(10) . '.zip'), $zipContent);
 
         $this->zip = app(ZipArchive::class);
 

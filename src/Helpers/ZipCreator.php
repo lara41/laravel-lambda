@@ -35,7 +35,7 @@ class ZipCreator
         $this->zip->close();
 
 
-        return tap(new Zip(file_get_contents($tempdest)), function () use ($tempdest) {
+        return tap(new Zip(file_get_contents($tempdest), $tempdest), function () use ($tempdest) {
             unlink($tempdest);
         });
     }
