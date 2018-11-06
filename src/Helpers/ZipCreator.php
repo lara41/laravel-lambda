@@ -34,10 +34,7 @@ class ZipCreator
 
         $this->zip->close();
 
-
-        return tap(new Zip(file_get_contents($tempdest), $tempdest), function () use ($tempdest) {
-            unlink($tempdest);
-        });
+        return new Zip($tempdest);
     }
 
     protected function getExcludes(array $excludes = [])
